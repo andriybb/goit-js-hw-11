@@ -1,21 +1,16 @@
 import { getImagesByQuery } from './js/pixabay-api.js';
-import { createGallery, clearGallery,  initLightbox, refreshLightbox } from './js/render-functions.js';
+import { createGallery, clearGallery, showLoader, hideLoader } from './js/render-functions.js';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
-const form = document.querySelector('.form');
-const gallery = document.querySelector('.gallery');
-const loader = document.querySelector('.loader');
 
-initLightbox();
+
+const form = document.querySelector('.form');
 
 form.addEventListener('submit', event => {
   event.preventDefault();
 
   const searchInput = form.elements['search-text'];
   const query = searchInput.value.trim();
-
 
   if (!query) {
     iziToast.warning({
@@ -29,21 +24,12 @@ form.addEventListener('submit', event => {
     return;
   }
 
-
-  clearGallery(gallery);
-
-
-  if (loader) {
-    loader.classList.remove('hidden');
-  }
-
+  clearGallery();
+  showLoader(); 
 
   getImagesByQuery(query)
     .then(data => {
-
-      if (loader) {
-        loader.classList.add('hidden');
-      }
+      hideLoader(); 
 
       if (data.hits.length === 0) {
         iziToast.error({
@@ -58,9 +44,7 @@ form.addEventListener('submit', event => {
       }
 
 
-      const markup = createGallery(data.hits);
-      gallery.innerHTML = markup;
-      refreshLightbox();
+      createGallery(data.hits);
 
       iziToast.success({
         title: 'Success',
@@ -73,10 +57,7 @@ form.addEventListener('submit', event => {
       });
     })
     .catch(error => {
-
-      if (loader) {
-        loader.classList.add('hidden');
-      }
+      hideLoader();
 
       iziToast.error({
         title: 'Error',
@@ -90,6 +71,5 @@ form.addEventListener('submit', event => {
       console.error('Error:', error);
     });
 
-
-    searchInput.value = '';
-  });
+  searchInput.value = '';
+});
