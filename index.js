@@ -1,4 +1,4 @@
-import{a as g,S as p,i as n}from"./assets/vendor-MgecxatS.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const l of t.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&r(l)}).observe(document,{childList:!0,subtree:!0});function s(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function r(e){if(e.ep)return;e.ep=!0;const t=s(e);fetch(e.href,t)}})();const h="";function y(i){const o=`https://pixabay.com/api/?key=${h}&q=${i}&image_type=photo&orientation=horizontal&safesearch=true`;return g.get(o).then(s=>s.data)}let c=null;function b(i){return i.map(o=>{const{webformatURL:s,largeImageURL:r,tags:e,likes:t,views:l,comments:m,downloads:d}=o;return`
+import{a as g,S as p,i as n}from"./assets/vendor-MgecxatS.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const l of t.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&r(l)}).observe(document,{childList:!0,subtree:!0});function s(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function r(e){if(e.ep)return;e.ep=!0;const t=s(e);fetch(e.href,t)}})();const h=void 0;function y(i){const o=`https://pixabay.com/api/?key=${h}&q=${i}&image_type=photo&orientation=horizontal&safesearch=true`;return g.get(o).then(s=>s.data)}let c=null;function b(i){return i.map(o=>{const{webformatURL:s,largeImageURL:r,tags:e,likes:t,views:l,comments:d,downloads:m}=o;return`
         <li class="gallery-item">
           <a class="gallery-link" href="${r}">
             <img 
@@ -19,11 +19,11 @@ import{a as g,S as p,i as n}from"./assets/vendor-MgecxatS.js";(function(){const 
             </div>
             <div class="image-box-statistic-item">
               <p class="info-label">Comments</p>
-              <p class="info-value">${m}</p>
+              <p class="info-value">${d}</p>
             </div>
             <div class="image-box-statistic-item">
               <p class="info-label">Downloads</p>
-              <p class="info-value">${d}</p>
+              <p class="info-value">${m}</p>
             </div>
           </div>
         </li>
