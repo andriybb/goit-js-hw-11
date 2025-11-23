@@ -60,7 +60,7 @@ form.addEventListener('submit', event => {
 
       const markup = createGallery(data.hits);
       gallery.innerHTML = markup;
-refreshLightbox();
+      refreshLightbox();
 
       iziToast.success({
         title: 'Success',
@@ -91,5 +91,5 @@ refreshLightbox();
     });
 
 
-  searchInput.value = '';
-});
+    searchInput.value = '';
+  });
